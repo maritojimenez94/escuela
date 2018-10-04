@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/layout :: head"></head>
+</head>
+<body>
+<header th:replace="layouts/layout::header"></header>
+<div class="container">
+	<table class="table">
+ <thead>
+  <tr>
+     <th scope="col">id</th>
+     <th scope="col">Nombres</th>
+     <th scope="col">Apellidos</th>
+     <th scope="col">Correo</th>
+     <th scope="col">Grado</th>
+  </tr>
+ </thead>
+ <tbody>
+ 
+  <tr th:each="alumnos: ${alumnos}">     
+     <td th:text="${alumnos.id_alumnos}"/>
+     <td th:text="${alumnos.name}" />
+     <td th:text="${alumnos.apellidos}" />
+     <td th:text="${alumnos.email}" />
+     <td th:text="${alumnos.grado}" />
+     <td> <a th:href="@{/form/} + ${alumnos.id_alumnos}" th:text="'Editar'" 
+             class="btn btn-primary btn-xs" ></a></td>
+     <td> <a th:href="@{/eliminara/} + ${alumnos.id_alumnos}" th:text="'Eliminar'" 
+             class="btn btn-danger btn-xs" 
+             onclick="return confirm('Estas seguro?')" ></a></td>
+  </tr>
+ </tbody>
+</table>
+</div>
+
+<a th:href="@{/form}" class="btn btn-primary">Crear Alumno</a>
+<a th:href="@{/}" class="btn btn-secondary">Regresar</a>
+<footer th:replace="layouts/layout::footer"></footer>
+</body>
+</html>

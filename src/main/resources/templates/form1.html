@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/layout :: head"></head>
+</head>
+<body>
+<header th:replace="layouts/layout::header"></header>
+	
+<div class="container">
+
+
+<form th:action="@{/form1}" th:object="${maestros}" method="post" >
+	<div class="form-group">
+    	<label for="firstName">Nombres</label>
+    	<input type="text" class="form-control" id="nombres" placeholder="Nombres" th:field="*{nombres}"/>
+    	<small th:if="${#fields.hasErrors('nombres')}" th:errors="*{nombres}" class="form-text text-danger"></small>
+  	</div>
+	<div class="form-group">
+    	<label for="lastName">Apellidos</label>
+    	<input type="text" class="form-control" id="apellidos" placeholder="Apellidos" th:field="*{apellidos}"/>
+    	<small th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}" class="form-text text-danger"></small>
+  	</div>
+  	
+  	<div class="form-group">
+    	<label for="valor">Dui</label>
+    	<input type="text" class="form-control" id="dui" placeholder="dui" th:field="*{dui}"/>
+    	<small th:if="${#fields.hasErrors('dui')}" th:errors="*{dui}" class="form-text text-danger"></small>
+  	</div>
+	<div class="form-group">
+    	<label for="email">Alumnos</label>
+    	<input type="text" class="form-control" id="alumnos" placeholder="alumnos" th:field="*{alumnos}"/>
+    	<small th:if="${#fields.hasErrors('alumnos')}" th:errors="*{alumnos}" class="form-text text-danger"></small>
+  	</div>
+  	
+  	
+  	
+  	<input type="submit" value="Crear" class="btn btn-primary"/>
+  	<a th:href="@{/listar1}" class="btn btn-secondary">Regresar</a>
+	<input type="hidden" id="id" th:field="*{id_maestros}">
+</form>
+
+	</div>
+<footer th:replace="layouts/layout::footer"></footer>
+</body>
+</html>
